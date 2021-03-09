@@ -37,7 +37,7 @@
         embedded.innerHTML = title.outerHTML;
 
 
-        $(embedded).appendTo('body');
+        document.querySelector('body').append(embedded);
         console.log(`${embedded.outerHTML}`)
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
