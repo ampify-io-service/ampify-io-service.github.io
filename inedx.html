@@ -38,36 +38,39 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    const userName = urlParams.get('userName')
-    const tweetsNum = urlParams.get('tweetsNum')
-    const twitterType = urlParams.get('twitterType')
-    const hideFooter = urlParams.get('hideFooter')
-    const compHeight = urlParams.get('compHeight')
-    const attributes = `${hideFooter === '1' ? 'noheader nofooter' : ''} transparent noscrollbar `
+    const userName = urlParams.get('userName');
+    const tweetsNum = urlParams.get('tweetsNum');
+    const twitterType = urlParams.get('twitterType');
+    const hideFooter = urlParams.get('hideFooter');
+    const compHeight = urlParams.get('compHeight');
+    const attributes = `${hideFooter === '1' ? 'noheader nofooter' : ''} transparent noscrollbar `;
 
     const embedded = document.createElement('a');
     embedded.classList.add('twitter-timeline');
-    embedded.setAttribute('data-tweet-limit', `${tweetsNum}`)
-    embedded.setAttribute('data-chrome', `${attributes}`)
-    embedded.setAttribute('data-height', `${compHeight}`)
-    embedded.setAttribute('href', `https://twitter.com/${userName}${twitterType==="Faves"?'/likes':''}`)
-    const title = `Tweets ${twitterType==="Faves"?'liked ':''}by @${userName}`
+    embedded.setAttribute('data-tweet-limit', `${tweetsNum}`);
+    embedded.setAttribute('data-chrome', `${attributes}`);
+    embedded.setAttribute('data-height', `${compHeight}`);
+    embedded.setAttribute('href', `https://twitter.com/${userName}${twitterType==="Faves"?'/likes':''}`);
+    const title = `Tweets ${twitterType==="Faves"?'liked ':''}by @${userName}`;
     embedded.innerHTML = title;
 
 
     document.querySelector('body').append(embedded);
     console.log(`${embedded.outerHTML}`)
 
-    twttr.widgets.load(
-        document.getElementById("body")
-    )
 
-    window.parent.postMessage({
-        sentinel: 'amp',
-        type: 'embed-size',
-        height: document.body.scrollHeight
-    }, '*');
-    console.log(`scroll height sent: ${scrollHeight}`)
+    twttr.ready(function(twttr) {
+        twttr.events.bind(
+            'rendered',
+            function(event) {
+                window.parent.postMessage({
+                    sentinel: 'amp',
+                    type: 'embed-size',
+                    height: document.body.scrollHeight
+                }, '*');
+                console.log(`scroll height sent: ${document.body.scrollHeight}`);
+            });
+    });
 </script>
 </body>
 
