@@ -18,9 +18,6 @@
 
     <!-- <a class="twitter-timeline" href="https://twitter.com/csdc/likes?ref_src=twsrc%5Etfw">Tweets Liked by @csdc</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
-
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
     <script>
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
@@ -45,6 +42,8 @@ href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':null}">
         document.querySelect('body').append(embedded);
         console.log(`${embedded.outerHTML}`)
     </script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </body>
 
 </html>
