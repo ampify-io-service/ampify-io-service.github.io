@@ -43,7 +43,7 @@
     const twitterType = urlParams.get('twitterType')
     const hideFooter = urlParams.get('hideFooter')
     const compHeight = urlParams.get('compHeight')
-    const attributes = `${hideFooter?'noheader nofooter':null} transparent noscrollbar `
+    const attributes = `${hideFooter === '1' ? 'noheader nofooter' : ''} transparent noscrollbar `
 
     const embedded = document.createElement('a');
     embedded.classList.add('twitter-timeline');
