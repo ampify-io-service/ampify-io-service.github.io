@@ -37,7 +37,7 @@ href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':null}">
     Tweets ${twitterType==="Faves"?'liked ':null}by @${userName}
 </a>
     `;
-        document.querySelector('body').append(embedded);
+        $(embedded).appendTo('body');
         console.log(`${embedded.outerHTML}`)
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
