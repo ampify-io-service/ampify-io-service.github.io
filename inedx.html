@@ -16,8 +16,8 @@
 <body>
     <script src="js/scripts.js"></script>
 
-    <a class="twitter-timeline" href="https://twitter.com/ABC/likes?ref_src=twsrc%5Etfw">Tweets Liked by @ABC</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <!-- <a class="twitter-timeline" href="https://twitter.com/csdc/likes?ref_src=twsrc%5Etfw">Tweets Liked by @csdc</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
 
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -30,7 +30,7 @@
         const twitterType = urlParams.get('twitterType')
         const hideFooter = urlParams.get('hideFooter')
         const compHeight = urlParams.get('compHeight')
-        const attributes = `${HideFooter?'noheader nofooter':null} transparent noscrollbar`
+        const attributes = `${hideFooter?'noheader nofooter':null} transparent noscrollbar`
 
         const embedded = `
 <a 
