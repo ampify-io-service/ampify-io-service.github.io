@@ -27,16 +27,16 @@
         const compHeight = urlParams.get('compHeight')
         const attributes = `${hideFooter?'noheader nofooter':null} transparent noscrollbar`
 
-        const embedded = `
-<a 
-class="twitter-timeline" 
-data-tweet-limit="${tweetsNum}" 
-data-chrome=${attributes} 
-data-height="${compHeight}" 
-href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':''}">
-    Tweets ${twitterType==="Faves"?'liked ':''}by @${userName}
-</a>
-    `;
+        const embedded = document.createElement('a');
+        embedded.classList.add('twitter-timeline');
+        embedded.setAttribute('data-tweet-limit', `${tweetsNum}`)
+        embedded.setAttribute('data-chrome', `${attributes}`)
+        embedded.setAttribute('data-height', `${compHeight}`)
+        embedded.setAttribute('data-href', `https://twitter.com/${userName}${twitterType==="Faves"?'/likes':''}`)
+        const title = `Tweets ${twitterType==="Faves"?'liked ':''}by @${userName}`
+        embedded.innerHTML = title.outerHTML;
+
+
         $(embedded).appendTo('body');
         console.log(`${embedded.outerHTML}`)
     </script>
