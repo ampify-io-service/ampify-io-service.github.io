@@ -39,10 +39,11 @@ data-tweet-limit="${tweetsNum}"
 data-chrome=${attributes} 
 data-height="${compHeight}" 
 href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':null}">
-    Tweets ${twitterType==="Faves"?'/liked ':null}by @${userName}
+    Tweets ${twitterType==="Faves"?'liked ':null}by @${userName}
 </a>
     `;
         document.querySelect('body').append(embedded);
+        console.log(`${embedded.outerHTML}`)
     </script>
 </body>
 
