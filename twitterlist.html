@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="author" content="SitePoint">
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+    <script src="js/scripts.js"></script>
+
+    <a class="twitter-timeline" href="https://twitter.com/ABC/likes?ref_src=twsrc%5Etfw">Tweets Liked by @ABC</a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+
+        const userName = urlParams.get('userName')
+        const tweetsNum = urlParams.get('tweetsNum')
+        const twitterType = urlParams.get('twitterType')
+        const hideFooter = urlParams.get('hideFooter')
+        const compHeight = urlParams.get('compHeight')
+        const attributes = `${HideFooter?'noheader nofooter':null} transparent noscrollbar`
+
+        const embedded = `
+<a 
+class="twitter-timeline" 
+data-tweet-limit="${tweetsNum}" 
+data-chrome=${attributes} 
+data-height="${compHeight}" 
+href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':null}">
+    Tweets ${twitterType==="Faves"?'/liked ':null}by @${userName}
+</a>
+    `;
+        document.querySelect('body').append(embedded);
+    </script>
+</body>
+
+</html>
