@@ -6,15 +6,13 @@
     <meta charset="utf-8">
 
     <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
+    <meta name="description" content="Twitter Feed">
+    <meta name="author" content="Twitter">
 
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
 
 </head>
 
 <body>
-    <script src="js/scripts.js"></script>
 
     <!-- <a class="twitter-timeline" href="https://twitter.com/csdc/likes?ref_src=twsrc%5Etfw">Tweets Liked by @csdc</a>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
@@ -39,7 +37,7 @@ href="https://twitter.com/${userName}${twitterType==="Faves"?'/likes':null}">
     Tweets ${twitterType==="Faves"?'liked ':null}by @${userName}
 </a>
     `;
-        document.querySelect('body').append(embedded);
+        document.querySelector('body').append(embedded);
         console.log(`${embedded.outerHTML}`)
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
