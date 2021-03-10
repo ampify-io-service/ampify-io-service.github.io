@@ -67,9 +67,9 @@
                     window.parent.postMessage({
                         sentinel: 'amp',
                         type: 'embed-size',
-                        height: document.body.scrollHeight
+                        height: document.querySelector('iframe').clientHeight
                     }, '*');
-                    console.log(`timeout sent: ${document.body.scrollHeight}`);
+                    console.log(`timeout sent: ${document.querySelector('iframe').clientHeight}`);
                 }, 1000);
 
 
