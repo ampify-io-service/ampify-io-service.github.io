@@ -30,6 +30,7 @@
     <title>The HTML5 Herald</title>
     <meta name="description" content="Twitter Feed">
     <meta name="author" content="Twitter">
+
 </head>
 
 <body id="body"></body>
@@ -58,17 +59,20 @@
     document.querySelector('body').append(embedded);
     console.log(`${embedded.outerHTML}`)
 
-
     twttr.ready(function(twttr) {
         twttr.events.bind(
             'rendered',
             function(event) {
-                window.parent.postMessage({
-                    sentinel: 'amp',
-                    type: 'embed-size',
-                    height: document.body.scrollHeight
-                }, '*');
-                console.log(`scroll height sent: ${document.body.scrollHeight}`);
+                setTimeout(function() {
+                    window.parent.postMessage({
+                        sentinel: 'amp',
+                        type: 'embed-size',
+                        height: document.body.scrollHeight
+                    }, '*');
+                    console.log(`timeout sent: ${document.body.scrollHeight}`);
+                }, 1000);
+
+
             });
     });
 </script>
